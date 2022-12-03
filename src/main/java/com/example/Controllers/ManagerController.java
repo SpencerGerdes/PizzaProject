@@ -64,18 +64,16 @@ public class ManagerController {
 
             ResultSet myRS = myStatement.executeQuery();
 
+
             ResultSetMetaData rsmd = myRS.getMetaData();
             int columnsNumber = rsmd.getColumnCount();
             while (myRS.next()) {
                 for (int i = 1; i <= columnsNumber; i++) {
-                    if (i > 1) System.out.print(",  ");
-                    String columnValue = myRS.getString(i);
-                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
+                    if (i > 1) System.out.print(" | ");
+                    System.out.print(myRS.getString(i));
                 }
                 System.out.println("");
             }
-
-
 
 
         } catch (SQLException e){
@@ -84,6 +82,92 @@ public class ManagerController {
 
 
     }
+    public void selectEmployee() throws IOException{
+        String databaseURL ="jdbc:ucanaccess://PizzaProject.accdb";
+        //gets the employeeID and password from database
+        try (Connection connection = DriverManager.getConnection(databaseURL)) {
+            PreparedStatement myStatement;
+            String SQLQuery="SELECT * FROM EMPLOYEE";
+            myStatement = connection.prepareStatement(SQLQuery);
+
+            ResultSet myRS = myStatement.executeQuery();
+
+
+            ResultSetMetaData rsmd = myRS.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (myRS.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(" | ");
+                    System.out.print(myRS.getString(i));
+                }
+                System.out.println("");
+            }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    public void selectCustDrink() throws IOException{
+        String databaseURL ="jdbc:ucanaccess://PizzaProject.accdb";
+        //gets the employeeID and password from database
+        try (Connection connection = DriverManager.getConnection(databaseURL)) {
+            PreparedStatement myStatement;
+            String SQLQuery="SELECT * FROM CUSTOMER_DRINKS";
+            myStatement = connection.prepareStatement(SQLQuery);
+
+            ResultSet myRS = myStatement.executeQuery();
+
+
+            ResultSetMetaData rsmd = myRS.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (myRS.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(" | ");
+                    System.out.print(myRS.getString(i));
+                }
+                System.out.println("");
+            }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    public void selectCustPizza() throws IOException{
+        String databaseURL ="jdbc:ucanaccess://PizzaProject.accdb";
+        //gets the employeeID and password from database
+        try (Connection connection = DriverManager.getConnection(databaseURL)) {
+            PreparedStatement myStatement;
+            String SQLQuery="SELECT * FROM CUSTOMER_PIZZAS";
+            myStatement = connection.prepareStatement(SQLQuery);
+
+            ResultSet myRS = myStatement.executeQuery();
+
+
+            ResultSetMetaData rsmd = myRS.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (myRS.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(" | ");
+                    System.out.print(myRS.getString(i));
+                }
+                System.out.println("");
+            }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 
 
 
