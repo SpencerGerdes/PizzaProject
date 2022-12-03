@@ -12,7 +12,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
+
+import static com.example.Controllers.OrderController.pizzaArray;
 
 public class ReceiptController {
     static String paymentType;
@@ -326,7 +329,7 @@ public class ReceiptController {
         myText.setText(setReceipt());
         myScroll.setContent(myText);
         myScroll.setFitToWidth(true);
-
+        pushToDat();
 
 
 
@@ -347,6 +350,30 @@ public class ReceiptController {
         finalScroll.setContent(finalText);
         finalScroll.setFitToWidth(true);
     }
+    public void pushToDat(){
+        String databaseURL ="jdbc:ucanaccess://PizzaProject.accdb";
+        //gets the employeeID and password from database
+
+        try (Connection connection = DriverManager.getConnection(databaseURL)) {
+            PreparedStatement myStatement;
+            String SQLQuery="INSERT INTO CUSTOMER_PIZZAS (?)";
+            myStatement = connection.prepareStatement(SQLQuery);
+            myStatement.setString(1,pizzaArray.get(0).toString());
+            ResultSet myRS = myStatement.executeQuery();
+
+
+
+
+            }
+
+
+         catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 
 

@@ -197,4 +197,8 @@ public PizzaObject(String size, String crustType, Boolean hasMozzarella, Boolean
     public void setHasPineapple(Boolean hasPineapple) {
         this.hasPineapple = hasPineapple;
     }
+
+    String ToString(){
+        return""+getSize();
+    }
 }
